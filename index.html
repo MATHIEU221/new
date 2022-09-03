@@ -1,0 +1,46 @@
+
+<html>
+  <head>
+    <title>Sound Identification Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class=""col-xs-12 header_div text-center></div>
+    <h2>sound controlled Aliens</h2>
+    <p>note:play different sounds like clap,snap,bell to make the aliens dance
+      </div>
+      <div class="main_div"></div>
+      <center>
+        <br>
+        <button class="btn btn-warning" onclick="startClassification();">START</button>
+        <h3 id="result_label">i can hear - </h3>
+        <h4 id="'result_confidence">Accuracy - 
+<br>
+<img src="https://i.pinimg.com/originals/64/36/2e/64362e0826385764be077e911cda5b7b.jpg"id="alien1"width="300" height="300">
+<img src="http://static.demilked.com/wp-content/uploads/2016/03/cute-fantasy-monsters-dolls-katyushka-7.jpg"id="alien2"width="300" height="300">
+<img src="data:image/jpeg;base64,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"id="alien3"width="300" height="300">
+<img src="https://mediablog.cdnpk.net/sites/9/2021/12/03a18-724x1024-1.jpg"id="alien4"width="300" height="300">
+</center>
+</div>
+<divclass="copy_right_footer">
+  Developed by - whitehatJr team 
+</div>
+<script src="main.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+ 
+
